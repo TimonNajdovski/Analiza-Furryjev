@@ -3,7 +3,8 @@ import os
 import requests
 import re
 
-fur_directory = 'D:\Faks\Projektna_analiza_podatkov\Analiza-Furryjev'
+main_directory = 'D:\Faks\Projektna_analiza_podatkov\Analiza-Furryjev'
+fursuit_directory = 'D:\Faks\Projektna_analiza_podatkov\Analiza-Furryjev\Fursuits'
 content_filename = 'rawr_data.html'
 test_filename = 'test.html'
 
@@ -39,4 +40,50 @@ def furs_from_file(directory, filename):
 
     return slovarji
 
-slovar = furs_from_file(fur_directory, content_filename)
+slovarji_in = furs_from_file(main_directory, content_filename)    
+
+def fur_more_data(Id):
+    try:
+        url = 'https://db.fursuit.me/index.php?c=viewsuit&id=' + Id
+        r = requests.get(url)
+        page_content = r.text
+    except ConnectionError:
+        return None
+    return page_content
+
+def save_furs_to_file(directory, filename):
+    for fur in slovarji_in:
+        Id = fur['Id']
+        path = os.path.join(directory, Id)
+        content = fur_more_data(Id)
+        
+        with open(path, 'w', encoding='utf-8') as file_out:
+            file_out.write(content)
+        
+    return None
+
+def get_fursuit_data(fur):
+    
+    pattern = re.compile(r'Fursuit Name:</td> <td class="input">(?P<Name>.*?)</td> </tr>'
+                        r'.*?Added:</td> <td class="input">(?P<Date>.*?)</td> </tr>'
+                        r'.*?Fursuits whose species is :  (?P<Species>.*?)" title="'
+                        r'.*?Fursuits with gender :  (?P<Fur_Gender>.*?)" title="Search', re.DOTALL)
+    
+    match = re.search(pattern, fur)
+
+    slovar = match.groupdict() if match is not None else None
+
+    return slovar
+
+def fursuits_from_file(directory):
+    slovarji_out = []
+    for fur in slovarji_in:
+        Id = fur['Id']
+        content = read_file_to_string(directory, Id)
+        slovar = get_fursuit_data(content)
+        slovarji_out.append(slovar)
+        slovar['Owner'] = fur['Ime']
+        print(slovar)
+    return slovarji_out
+
+slovarji = fursuits_from_file(fursuit_directory)
