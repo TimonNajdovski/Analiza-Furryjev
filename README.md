@@ -12,3 +12,4 @@ Analiziral bom uporabnike spletne strani https://db.fursuit.me/
 - Obstaja korelacija med spolom in vrsto živali  
 - Najpogostejše vrste so iz redu zveri
 - Povprečen uporabnik kupi fursuit v svojih srednjih dvajsetih letih
+- Živali, rangirane po popularnosti, bodo tvorile obratno sorazmerno krivuljo
