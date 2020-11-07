@@ -5,9 +5,11 @@ Analiziral bom uporabnike spletne strani https://db.fursuit.me/
 #### Za vsakega uporabnika bom zajel:
 - Državo, v kateri prebiva  
 - Spol
-- Starost  
+- Starost
+- Spol živali
 - Vrsto živali
-- Leto izdelave fursuita  
+- Leto, ko je ustvaril račun
+- Leto, ko je kupil fursuit
 ## Hipoteze
 - Obstaja korelacija med spolom in vrsto živali  
 - Najpogostejše vrste so iz redu zveri
