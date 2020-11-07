@@ -152,18 +152,18 @@ def write_csv(fieldnames, rows, directory, filename):
     return
 
 def write_furs_to_csv(furs, directory, filename):
-    """Funkcija vse podatke iz parametra "ads" zapiše v csv datoteko podano s
+    """Funkcija vse podatke iz parametra "furs" zapiše v csv datoteko podano s
     parametroma "directory"/"filename". Funkcija predpostavi, da so ključi vseh
-    slovarjev parametra ads enaki in je seznam ads neprazen."""
+    slovarjev parametra furs enaki in je seznam furs neprazen."""
     
     assert furs and (all(j.keys() == furs[0].keys() for j in furs))
     write_csv(furs[0].keys(), furs, directory, filename)
 
 def main(redownload=False, reparse=True):
-    """Funkcija izvede celoten del pridobivanja podatkov"""
+    """Funkcija izvede celoten proces pridobivanja podatkov"""
 
     
-    # Najprej v lokalno datoteko shranimo glavno stran
+    # Najprej v lokalno datoteko shranimo glavno stran, uporabnike in fursuite
     if redownload:
         get_page_initial(main_directory, main_filename)
         slovarji_in = furs_from_file(main_directory, main_filename)
