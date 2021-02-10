@@ -1,7 +1,7 @@
 # Analiza-Furryjev
 
 Furryji so navdušenci nad živalskimi liki s človeškimi osebnostmi, zlasti ljudje, ki se identificirajo s nekim živalskim likom (svojo fursono, fur + persona) in se oblačijo v kostum (fursuit) tega lika.  
-Analiziral bom uporabnike spletne strani https://db.fursuit.me/, kjer uporabniki lahko ustvarijo svoj račun in objavijo svoj fursuit.
+Analiziral bom uporabnike spletne strani https://db.fursuit.me/, kjer uporabniki lahko ustvarijo račun in objavijo svoj fursuit.
 
 #### Za vsakega uporabnika bom zajel:
 - Državo prebivališča
